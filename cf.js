@@ -19,10 +19,10 @@ async function handleRequest(request) {
 function handleWebSocketSession(webSocket) {
     webSocket.accept();
 
-    let n = 3;
+    let n = BigInt(3);
     let step = 0;
     const totalSteps = 100;
-    let expectedHash = hash512((n + 1) ** n);
+    let expectedHash = hash512((n + BigInt(1)) ** n);
 
     webSocket.addEventListener("message", async (msg) => {
         const clientHash = msg.data;
@@ -34,8 +34,8 @@ function handleWebSocketSession(webSocket) {
                 webSocket.send("accepted, please proceed");
                 step++;
 
-                n += 1;
-                expectedHash = hash512((n + 1) ** n);
+                n += BigInt(1);
+                expectedHash = hash512((n + BigInt(1)) ** n);
 
                 if (step === totalSteps) {
                     webSocket.send(

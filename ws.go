@@ -15,7 +15,7 @@ const totalSteps = 100
 
 func main() {
 	// Connect to the WebSocket server
-	url := "wss://shrill-water-9c29.svx-cf.workers.dev/"
+	url := "wss://gentle-cake-ec54.svx-cf.workers.dev/"
 	ws, _, err := websocket.DefaultDialer.Dial(url, nil)
 	if err != nil {
 		log.Fatal("Error connecting to WebSocket server:", err)
@@ -75,7 +75,7 @@ func main() {
 				n++
 				sendResponse()
 			}
-		} else if strings.Contains(data, "good job") {
+		} else if strings.Contains(data, "Good Job") {
 			fmt.Println("Challenge completed successfully!")
 			break
 		}
